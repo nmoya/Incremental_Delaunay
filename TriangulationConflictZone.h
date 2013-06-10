@@ -8,7 +8,8 @@
 #include <QEvent>
 #include <list>
 
-
+#include <iostream>
+using namespace std;
 
 namespace CGAL {
 namespace Qt {
@@ -45,7 +46,7 @@ template <typename T>
 TriangulationConflictZone<T>::TriangulationConflictZone(QGraphicsScene* s,
 							T * dt_,
 							QObject* parent)
-  :  GraphicsViewInput(parent), dt(dt_), scene_(s), animate(false)
+  :  GraphicsViewInput(parent), dt(dt_), scene_(s), animate(true)
 {}
 
 
@@ -100,7 +101,7 @@ void
 TriangulationConflictZone<T>::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
   if(animate){
-    localize_and_insert_point(event->scenePos());
+  localize_and_insert_point(event->scenePos());
   }
 }
 
@@ -116,7 +117,7 @@ TriangulationConflictZone<T>::mouseReleaseEvent(QGraphicsSceneMouseEvent * /*eve
     delete *it;
   }
   qfaces.clear();
-  animate = false;
+  //animate = false;
 }
 
 

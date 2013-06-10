@@ -105,10 +105,10 @@ TriangulationMovingPoint<T>::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
      event->button() != ::Qt::LeftButton) {
     return;
   }
-
+  /*
   if(insertedPoint){
     dt->remove(vh);
-  }
+  }*/
   vh = Vertex_handle();
   
   emit(modelChanged());

@@ -161,7 +161,7 @@ MainWindow::MainWindow()
   // Setup the scene and the view
   //
   scene.setItemIndexMethod(QGraphicsScene::NoIndex);
-  scene.setSceneRect(-100, -100, 100, 100);
+  scene.setSceneRect(0, 0, 700, 400);
   this->graphicsView->setScene(&scene);
   this->graphicsView->setMouseTracking(true);
 
@@ -380,7 +380,7 @@ int main(int argc, char **argv)
 
   app.setOrganizationDomain("geometryfactory.com");
   app.setOrganizationName("GeometryFactory");
-  app.setApplicationName("Delaunay_triangulation_2 demo");
+  app.setApplicationName("Incremental Delaunay");
 
   // Import resources from libCGALQt4.
   // See http://doc.trolltech.com/4.4/qdir.html#Q_INIT_RESOURCE
