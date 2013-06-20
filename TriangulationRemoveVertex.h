@@ -26,7 +26,7 @@ public:
 protected:
 
   void mousePressEvent(QGraphicsSceneMouseEvent *event);
- 
+  void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
   bool eventFilter(QObject *obj, QEvent *event);
 
   DT * dt;
@@ -64,11 +64,16 @@ template <typename T>
 bool 
 TriangulationRemoveVertex<T>::eventFilter(QObject *obj, QEvent *event)
 {
+  /*if (event->type() == QEvent::GraphicsSceneMouseMove) {
+    QGraphicsSceneMouseEvent *mouseEvent = static_cast<QGraphicsSceneMouseEvent *>(event);
+    mouseMoveEvent(mouseEvent);
+    return false;*/
   if (event->type() == QEvent::GraphicsSceneMousePress) {
     QGraphicsSceneMouseEvent *mouseEvent = static_cast<QGraphicsSceneMouseEvent *>(event);
     mousePressEvent(mouseEvent);
     return false;
-  } else{
+  
+  }else{
     // standard event processing
     return QObject::eventFilter(obj, event);
   }

@@ -126,7 +126,7 @@ MainWindow::MainWindow()
   mp = new CGAL::Qt::TriangulationMovingPoint<Delaunay>(&dt, this);
   // TriangulationMovingPoint<Delaunay> emits a modelChanged() signal each
   // time the moving point moves.
-  // The following connection is for the purpose of emitting changed().
+  // The following connection is for the purpose8 of emitting changed().
   QObject::connect(mp, SIGNAL(modelChanged()),
 		   this, SIGNAL(changed()));
 
@@ -161,7 +161,7 @@ MainWindow::MainWindow()
   // Setup the scene and the view
   //
   scene.setItemIndexMethod(QGraphicsScene::NoIndex);
-  scene.setSceneRect(0, 0, 700, 400);
+  scene.setSceneRect(0, 0, 800, 600);
   this->graphicsView->setScene(&scene);
   this->graphicsView->setMouseTracking(true);
 
@@ -174,8 +174,8 @@ MainWindow::MainWindow()
 
   this->setupStatusBar();
   this->setupOptionsMenu();
-  this->addAboutDemo(":/cgal/help/about_Delaunay_triangulation_2.html");
-  this->addAboutCGAL();
+  //this->addAboutDemo(":/cgal/help/about_Delaunay_triangulation_2.html");
+  //this->addAboutCGAL();
 
   this->addRecentFiles(this->menuFile, this->actionQuit);
   connect(this, SIGNAL(openRecentFile(QString)),
@@ -241,11 +241,13 @@ void
 MainWindow::on_actionCircumcenter_toggled(bool checked)
 {
   if(checked){
-    scene.installEventFilter(tcc);
-    tcc->show();
+    scene.installEventFilter(trv);
+    //scene.installEventFilter(tcc);
+    //tcc->show();
   } else {  
-    scene.removeEventFilter(tcc);
-    tcc->hide();
+    scene.removeEventFilter(trv);
+    //scene.removeEventFilter(tcc);
+    //tcc->hide();
   }
 }
 
@@ -282,8 +284,8 @@ MainWindow::on_actionInsertRandomPoints_triggered()
   bool ok = false;
   const int number_of_points = 
     QInputDialog::getInteger(this, 
-                             tr("Number of random points"),
-                             tr("Enter number of random points"),
+                             tr("Pontos aleatorios"),
+                             tr("Numero de pontos:"),
 			     100,
 			     0,
 			     (std::numeric_limits<int>::max)(),
@@ -378,8 +380,8 @@ int main(int argc, char **argv)
 {
   QApplication app(argc, argv);
 
-  app.setOrganizationDomain("geometryfactory.com");
-  app.setOrganizationName("GeometryFactory");
+  app.setOrganizationDomain("Nikolas Moya");
+  app.setOrganizationName("Nikolas Moya");
   app.setApplicationName("Incremental Delaunay");
 
   // Import resources from libCGALQt4.

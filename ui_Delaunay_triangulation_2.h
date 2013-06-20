@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'Delaunay_triangulation_2.ui'
 **
-** Created: Sun Jun 9 18:28:14 2013
+** Created: Thu Jun 20 19:52:22 2013
 **      by: Qt User Interface Compiler version 4.8.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -58,7 +58,7 @@ public:
     {
         if (Delaunay_triangulation_2->objectName().isEmpty())
             Delaunay_triangulation_2->setObjectName(QString::fromUtf8("Delaunay_triangulation_2"));
-        Delaunay_triangulation_2->resize(800, 600);
+        Delaunay_triangulation_2->resize(799, 600);
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/cgal/logos/cgal_icon"), QSize(), QIcon::Normal, QIcon::Off);
         Delaunay_triangulation_2->setWindowIcon(icon);
@@ -80,6 +80,7 @@ public:
         actionInsertPoint->setObjectName(QString::fromUtf8("actionInsertPoint"));
         actionInsertPoint->setCheckable(true);
         actionInsertPoint->setChecked(false);
+        actionInsertPoint->setEnabled(true);
         QIcon icon2;
         icon2.addFile(QString::fromUtf8(":/cgal/Input/inputPoint.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionInsertPoint->setIcon(icon2);
@@ -95,12 +96,14 @@ public:
         QIcon icon4;
         icon4.addFile(QString::fromUtf8(":/cgal/Triangulation_2/Voronoi_diagram_2.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionShowVoronoi->setIcon(icon4);
+        actionShowVoronoi->setVisible(false);
         actionShowDelaunay = new QAction(Delaunay_triangulation_2);
         actionShowDelaunay->setObjectName(QString::fromUtf8("actionShowDelaunay"));
         actionShowDelaunay->setCheckable(true);
         QIcon icon5;
         icon5.addFile(QString::fromUtf8(":/cgal/Actions/icons/triangulation.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionShowDelaunay->setIcon(icon5);
+        actionShowDelaunay->setVisible(false);
         actionLoadPoints = new QAction(Delaunay_triangulation_2);
         actionLoadPoints->setObjectName(QString::fromUtf8("actionLoadPoints"));
         QIcon icon6;
@@ -153,7 +156,7 @@ public:
         Delaunay_triangulation_2->addToolBar(Qt::TopToolBarArea, toolBar);
         menubar = new QMenuBar(Delaunay_triangulation_2);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 19));
+        menubar->setGeometry(QRect(0, 0, 799, 27));
         menuFile = new QMenu(menubar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
         menuEdit = new QMenu(menubar);
@@ -165,15 +168,15 @@ public:
         fileToolBar->addAction(actionClear);
         fileToolBar->addAction(actionLoadPoints);
         fileToolBar->addAction(actionSavePoints);
+        fileToolBar->addAction(actionRecenter);
         toolBar->addAction(actionInsertPoint);
-        toolBar->addAction(actionMovingPoint);
         toolBar->addAction(actionCircumcenter);
+        toolBar->addAction(actionShowDelaunay);
+        toolBar->addAction(actionMovingPoint);
+        toolBar->addAction(actionShowVoronoi);
         toolBar->addAction(actionShowConflictZone);
         toolBar->addSeparator();
-        toolBar->addAction(actionShowDelaunay);
-        toolBar->addAction(actionShowVoronoi);
         toolBar->addSeparator();
-        toolBar->addAction(actionRecenter);
         menubar->addAction(menuFile->menuAction());
         menubar->addAction(menuEdit->menuAction());
         menubar->addAction(menuTools->menuAction());

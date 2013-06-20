@@ -59,8 +59,10 @@ TriangulationPointInputAndConflictZone<T>::mousePressEvent(QGraphicsSceneMouseEv
      event->button() != ::Qt::LeftButton) {
     return;
   }
+  if((event->modifiers() & ::Qt::ShiftModifier))
+    return;
   
-  //Para cada um dos conflitos do novo ponto, se a face nao for infinita, pinta de azul a regiao
+  //Para cada um dos conflitos do novo ponto, se a face nao for infinita, pinta de verde a regiao
   dt->find_conflicts(p, faces);
   for(typename std::list<Face_handle>::iterator it = faces.begin();
       it != faces.end();
@@ -79,8 +81,9 @@ TriangulationPointInputAndConflictZone<T>::mousePressEvent(QGraphicsSceneMouseEv
 
 template <typename T>
 void 
-TriangulationPointInputAndConflictZone<T>::mouseReleaseEvent(QGraphicsSceneMouseEvent * /*event*/)
+TriangulationPointInputAndConflictZone<T>::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
+  int flag = 0;
   faces.clear();
   for(std::list<QGraphicsPolygonItem*>::iterator it = qfaces.begin();
       it != qfaces.end();
@@ -89,7 +92,12 @@ TriangulationPointInputAndConflictZone<T>::mouseReleaseEvent(QGraphicsSceneMouse
     delete *it;
   }
   qfaces.clear();
-  emit (generate(CGAL::make_object(p)));
+  if (event->modifiers() == 1)
+  {
+    flag = 1;
+  }
+  if (flag == 0 && event->button() == ::Qt::LeftButton)
+    emit (generate(CGAL::make_object(p)));
 }
 
 
