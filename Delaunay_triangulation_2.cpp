@@ -241,11 +241,14 @@ void
 MainWindow::on_actionCircumcenter_toggled(bool checked)
 {
   if(checked){
+    scene.installEventFilter(cz);
     scene.installEventFilter(trv);
+
     //scene.installEventFilter(tcc);
     //tcc->show();
   } else {  
     scene.removeEventFilter(trv);
+    scene.removeEventFilter(cz);
     //scene.removeEventFilter(tcc);
     //tcc->hide();
   }

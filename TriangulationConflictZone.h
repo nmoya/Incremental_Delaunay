@@ -8,8 +8,7 @@
 #include <QEvent>
 #include <list>
 
-#include <iostream>
-using namespace std;
+
 
 namespace CGAL {
 namespace Qt {
@@ -44,9 +43,9 @@ protected:
 
 template <typename T>
 TriangulationConflictZone<T>::TriangulationConflictZone(QGraphicsScene* s,
-							T * dt_,
-							QObject* parent)
-  :  GraphicsViewInput(parent), dt(dt_), scene_(s), animate(true)
+              T * dt_,
+              QObject* parent)
+  :  GraphicsViewInput(parent), dt(dt_), scene_(s), animate(false)
 {}
 
 
@@ -70,7 +69,7 @@ TriangulationConflictZone<T>::localize_and_insert_point(QPointF qt_point)
       ++it){
     if(! dt->is_infinite(*it)){
       QGraphicsPolygonItem *item = new QGraphicsPolygonItem(convert(dt->triangle(*it)));
-      QColor color(::Qt::yellow);
+      QColor color(::Qt::green);
       color.setAlpha(150);
       item->setBrush(color);
       scene_->addItem(item);
@@ -101,7 +100,7 @@ void
 TriangulationConflictZone<T>::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
   if(animate){
-  localize_and_insert_point(event->scenePos());
+    localize_and_insert_point(event->scenePos());
   }
 }
 
