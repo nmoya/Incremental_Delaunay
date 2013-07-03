@@ -220,8 +220,12 @@ MainWindow::on_actionMovingPoint_toggled(bool checked)
 
   if(checked){
     scene.installEventFilter(mp);
+    scene.installEventFilter(tcc);
+    tcc->show();
   } else {
     scene.removeEventFilter(mp);
+    scene.removeEventFilter(tcc);
+    tcc->hide();
   }
 }
 

@@ -301,6 +301,9 @@
    <property name="text">
     <string>Show Conflict Zone</string>
    </property>
+   <property name="visible">
+    <bool>false</bool>
+   </property>
   </action>
  </widget>
  <resources>

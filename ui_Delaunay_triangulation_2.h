@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'Delaunay_triangulation_2.ui'
 **
-** Created: Thu Jun 20 19:52:22 2013
+** Created: Fri Jun 21 00:52:02 2013
 **      by: Qt User Interface Compiler version 4.8.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -131,6 +131,7 @@ public:
         QIcon icon10;
         icon10.addFile(QString::fromUtf8(":/cgal/Actions/icons/conflict_zone.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionShowConflictZone->setIcon(icon10);
+        actionShowConflictZone->setVisible(false);
         centralwidget = new QWidget(Delaunay_triangulation_2);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         gridLayout = new QGridLayout(centralwidget);
